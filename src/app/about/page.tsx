@@ -64,14 +64,14 @@ export default function About() {
                 About Me
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 mb-6">
-                As an Engineering Manager – SDET at Newfold Digital, I'm committed to continuous 
+                As an Engineering Manager – SDET at Newfold Digital, I&apos;m committed to continuous 
                 improvement and bringing value to organizations that prioritize excellence through 
                 growth, inspiration, and high standards.
               </p>
               <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
                 At 18, I embraced competition and aimed for the top. Whether acing exams, mastering tech, 
                 or charming crowds, I use my wit and intelligence to win at the game of life. With patience 
-                and determination, I won't back down. My sights are set on ruling the world, and my marks will soar.
+                and determination, I won&apos;t back down. My sights are set on ruling the world, and my marks will soar.
               </p>
               
               {/* Quick Stats */}
@@ -235,7 +235,7 @@ export default function About() {
               Beyond Work
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              When I'm not optimizing test automation frameworks, you'll find me pursuing my passions.
+              When I&apos;m not optimizing test automation frameworks, you&apos;ll find me pursuing my passions.
             </p>
           </motion.div>
 

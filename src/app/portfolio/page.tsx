@@ -1,10 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import { ExternalLink, Github, Award, Users, BarChart3 } from "lucide-react";
+import { ExternalLink, Github, Calendar } from "lucide-react";
+import { useState } from "react";
 
 export default function Portfolio() {
   const projects = [
@@ -169,16 +168,16 @@ export default function Portfolio() {
                 className="bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
               >
                 <div className="relative h-48 bg-gradient-to-br from-blue-400 to-purple-500">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover"
-                    onError={(e) => {
-                      // Fallback gradient background if image fails to load
-                      e.currentTarget.style.display = 'none';
-                    }}
-                  />
+                  {/* Fallback gradient background with project icon */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-6xl text-white/80">
+                      {project.category === 'Dashboard' && '📊'}
+                      {project.category === 'Automation' && '🤖'}
+                      {project.category === 'Testing Framework' && '🧪'}
+                      {project.category === 'Blog' && '📝'}
+                      {project.category === 'Innovation' && '🚀'}
+                    </div>
+                  </div>
                   <div className="absolute top-4 left-4">
                     <span className="px-3 py-1 bg-white/90 dark:bg-gray-900/90 text-xs font-medium text-gray-900 dark:text-white rounded-full">
                       {project.category}
@@ -217,7 +216,7 @@ export default function Portfolio() {
 
                   <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-3 mb-4">
                     <div className="flex items-center mb-1">
-                      <BarChart3 className="h-4 w-4 text-green-600 mr-2" />
+                      <Calendar className="h-4 w-4 text-green-600 mr-2" />
                       <span className="text-sm font-medium text-green-800 dark:text-green-400">Impact</span>
                     </div>
                     <p className="text-sm text-green-700 dark:text-green-300">
@@ -349,7 +348,7 @@ export default function Portfolio() {
               Ready to Start Your Next Project?
             </h2>
             <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-              Let's collaborate on building innovative quality engineering solutions that drive real impact.
+              Let&apos;s collaborate on building innovative quality engineering solutions that drive real impact.
             </p>
             <Link
               href="/contact"

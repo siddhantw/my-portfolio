@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useState } from "react";
 import { 
   Mail, 
@@ -111,54 +110,41 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
-      {/* Header Section */}
+      {/* Header Section - Simplified without motion */}
       <section className="py-20 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-blue-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
+          <div>
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-              Let's Connect
+              Let&apos;s Connect
             </h1>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Ready to elevate your quality engineering practices? Let's discuss how we can work together 
+              Ready to elevate your quality engineering practices? Let&apos;s discuss how we can work together 
               to build better testing strategies and accelerate your career growth.
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Contact Form & Info */}
+      {/* Contact Form & Info - Simplified without motion */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
+            <div>
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
                 Send a Message
               </h2>
               
               {isSubmitted ? (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-6 text-center"
-                >
+                <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-6 text-center">
                   <CheckCircle className="h-12 w-12 text-green-600 mx-auto mb-4" />
                   <h3 className="text-lg font-semibold text-green-800 dark:text-green-400 mb-2">
                     Message Sent Successfully!
                   </h3>
                   <p className="text-green-600 dark:text-green-300">
-                    Thank you for reaching out. I'll get back to you within 24 hours.
+                    Thank you for reaching out. I&apos;ll get back to you within 24 hours.
                   </p>
-                </motion.div>
+                </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -279,16 +265,10 @@ export default function Contact() {
                   </button>
                 </form>
               )}
-            </motion.div>
+            </div>
 
             {/* Contact Information */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="space-y-8"
-            >
+            <div className="space-y-8">
               <div>
                 <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
                   Get in Touch
@@ -369,7 +349,7 @@ export default function Contact() {
                   For urgent matters, please mention it in your message subject line.
                 </p>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>

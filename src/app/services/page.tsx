@@ -312,7 +312,7 @@ export default function Services() {
                   ))}
                 </div>
                 <blockquote className="text-gray-600 dark:text-gray-400 mb-6 italic">
-                  "{testimonial.quote}"
+                  &ldquo;{testimonial.quote}&rdquo;
                 </blockquote>
                 <div>
                   <div className="font-semibold text-gray-900 dark:text-white">
@@ -344,7 +344,7 @@ export default function Services() {
               Ready to Transform Your Quality Engineering?
             </h2>
             <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-              Let's discuss your specific needs and create a customized plan to achieve your quality engineering goals.
+              Let&apos;s discuss your specific needs and create a customized plan to achieve your quality engineering goals.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

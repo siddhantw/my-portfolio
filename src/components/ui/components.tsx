@@ -1,9 +1,9 @@
-import { ReactNode, ButtonHTMLAttributes, AnchorHTMLAttributes } from "react";
-import { motion } from "framer-motion";
+import { ReactNode } from "react";
+import { motion, HTMLMotionProps } from "framer-motion";
 import { LucideIcon } from "lucide-react";
 
-// Button component with variants
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+// Button component with variants - properly typed to avoid prop conflicts
+interface ButtonProps extends Omit<HTMLMotionProps<"button">, "children"> {
   variant?: "primary" | "secondary" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
   children: ReactNode;
@@ -255,7 +255,7 @@ export const SectionHeader = ({ title, subtitle, align = "center", className = "
 };
 
 // Icon Button component
-interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface IconButtonProps extends Omit<HTMLMotionProps<"button">, "children"> {
   icon: LucideIcon;
   label: string;
   size?: "sm" | "md" | "lg";

@@ -1,9 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
-import { Award, Calendar, MapPin, Users, ExternalLink, Play } from "lucide-react";
+import { ExternalLink, Calendar, Play, MapPin, Users } from "lucide-react";
 
 export default function Speaking() {
   const upcomingEvents = [
@@ -389,7 +388,7 @@ export default function Speaking() {
               Invite Me to Speak
             </h2>
             <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-              Looking for an engaging speaker for your next event? Let's discuss how I can 
+              Looking for an engaging speaker for your next event? Let&apos;s discuss how I can 
               contribute to your conference, meetup, or corporate event.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

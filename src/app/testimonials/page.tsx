@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { Star, Quote, Linkedin, Building, User } from "lucide-react";
 
 export default function Testimonials() {
@@ -166,8 +165,8 @@ export default function Testimonials() {
                 </div>
 
                 {/* Quote */}
-                <blockquote className="text-gray-600 dark:text-gray-400 mb-6 italic leading-relaxed">
-                  "{testimonial.quote}"
+                <blockquote className="text-gray-600 dark:text-gray-400 mb-6 italic">
+                  &ldquo;{testimonial.quote}&rdquo;
                 </blockquote>
 
                 {/* Project Context */}
@@ -184,18 +183,10 @@ export default function Testimonials() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center">
                     <div className="relative w-12 h-12 rounded-full overflow-hidden bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center mr-4">
-                      <Image
-                        src={testimonial.avatar}
-                        alt={testimonial.name}
-                        width={48}
-                        height={48}
-                        className="w-full h-full object-cover"
-                        onError={(e) => {
-                          // Fallback to user icon if image fails to load
-                          e.currentTarget.style.display = 'none';
-                        }}
-                      />
-                      <User className="h-6 w-6 text-white absolute" style={{display: 'none'}} />
+                      {/* Fallback avatar with initials */}
+                      <span className="text-white font-semibold text-lg">
+                        {testimonial.name.split(' ').map(n => n[0]).join('')}
+                      </span>
                     </div>
                     <div>
                       <div className="font-semibold text-gray-900 dark:text-white">
@@ -215,7 +206,7 @@ export default function Testimonials() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="p-2 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-colors"
-                    aria-label={`View ${testimonial.name}'s LinkedIn profile`}
+                    aria-label={`View ${testimonial.name}&apos;s LinkedIn profile`}
                   >
                     <Linkedin className="h-5 w-5" />
                   </a>
@@ -277,7 +268,7 @@ export default function Testimonials() {
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
               Have you worked with me on a project or attended one of my training sessions? 
-              I'd love to hear about your experience.
+              I&apos;d love to hear about your experience.
             </p>
             <a
               href="/contact"

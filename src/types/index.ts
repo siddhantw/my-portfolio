@@ -1,246 +1,284 @@
-export interface PersonalInfo {
+// User and Profile Types
+export interface User {
+  id: string;
   name: string;
+  email: string;
+  avatar?: string;
+  role: 'admin' | 'user' | 'moderator';
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface Profile {
+  id: string;
+  userId: string;
+  bio?: string;
+  location?: string;
+  website?: string;
+  social: {
+    linkedin?: string;
+    twitter?: string;
+    github?: string;
+    youtube?: string;
+  };
+  skills: string[];
+  experience: Experience[];
+  education: Education[];
+}
+
+// Experience and Education Types
+export interface Experience {
+  id: string;
   title: string;
   company: string;
   location: string;
-  email: string;
-  phone: string;
-  social: SocialLinks;
-  bio: string;
-  image: string;
+  startDate: Date;
+  endDate?: Date;
+  current: boolean;
+  description: string;
+  technologies: string[];
 }
 
-export interface SocialLinks {
-  linkedin: string;
-  twitter: string;
-  github: string;
-  youtube: string;
-  website?: string;
-}
-
-export interface Skill {
+export interface Education {
   id: string;
-  name: string;
-  category: SkillCategory;
-  level: SkillLevel;
-  icon?: string;
+  degree: string;
+  institution: string;
+  location: string;
+  startDate: Date;
+  endDate?: Date;
+  gpa?: number;
   description?: string;
-  yearsOfExperience?: number;
 }
 
-export type SkillCategory = 
-  | "Programming Languages"
-  | "Testing Tools"
-  | "Frameworks"
-  | "DevOps"
-  | "Databases"
-  | "Cloud Platforms"
-  | "Project Management"
-  | "Soft Skills";
-
-export type SkillLevel = "Beginner" | "Intermediate" | "Advanced" | "Expert";
-
+// Project Types
 export interface Project {
   id: string;
   title: string;
   description: string;
   longDescription?: string;
+  image: string;
+  images: string[];
   technologies: string[];
+  features: string[];
+  liveUrl?: string;
+  githubUrl?: string;
   category: ProjectCategory;
-  status: ProjectStatus;
-  startDate: string;
-  endDate?: string;
-  image?: string;
-  gallery?: string[];
-  links: {
-    demo?: string;
-    github?: string;
-    case_study?: string;
-  };
-  highlights: string[];
-  challenges?: string[];
-  solutions?: string[];
+  status: 'completed' | 'in-progress' | 'planned';
+  startDate: Date;
+  endDate?: Date;
   impact?: string;
+  testimonial?: {
+    text: string;
+    author: string;
+    role: string;
+    company: string;
+  };
 }
 
 export type ProjectCategory = 
-  | "Test Automation"
-  | "Quality Engineering"
-  | "DevOps"
-  | "Team Leadership"
-  | "Process Improvement"
-  | "Training & Development";
+  | 'dashboard' 
+  | 'automation' 
+  | 'testing-framework' 
+  | 'blog' 
+  | 'innovation' 
+  | 'mobile-app' 
+  | 'web-app';
 
-export type ProjectStatus = "Completed" | "In Progress" | "Planned" | "On Hold";
-
+// Service Types
 export interface Service {
   id: string;
   title: string;
   description: string;
-  features: string[];
+  longDescription?: string;
   icon: string;
-  pricing?: ServicePricing;
-  duration?: string;
-  deliverables: string[];
+  features: string[];
+  price: {
+    amount?: number;
+    currency: string;
+    period?: 'hour' | 'day' | 'week' | 'month' | 'project';
+    display: string;
+  };
+  duration: string;
+  category: ServiceCategory;
+  available: boolean;
 }
 
-export interface ServicePricing {
-  type: "Fixed" | "Hourly" | "Project-based" | "Custom";
-  amount?: number;
-  currency?: string;
-  description?: string;
-}
+export type ServiceCategory = 
+  | 'consulting' 
+  | 'mentorship' 
+  | 'training' 
+  | 'speaking' 
+  | 'development';
 
-export interface Speaking {
+// Speaking and Event Types
+export interface SpeakingEvent {
   id: string;
   title: string;
-  event: string;
-  date: string;
-  location: string;
-  type: SpeakingType;
-  audience: number;
-  topics: string[];
   description: string;
-  links: {
-    slides?: string;
-    video?: string;
-    event_page?: string;
-  };
-  image?: string;
+  date: Date;
+  location: string;
+  venue?: string;
+  type: EventType;
+  topic: string;
+  audience: string;
+  status: EventStatus;
+  url?: string;
+  recording?: string;
+  slides?: string;
+  images: string[];
+  feedback?: EventFeedback[];
 }
 
-export type SpeakingType = 
-  | "Keynote"
-  | "Technical Talk"
-  | "Workshop"
-  | "Panel Discussion"
-  | "Webinar"
-  | "Podcast";
+export type EventType = 
+  | 'keynote' 
+  | 'technical-session' 
+  | 'workshop' 
+  | 'panel' 
+  | 'lightning-talk' 
+  | 'webinar';
 
+export type EventStatus = 
+  | 'upcoming' 
+  | 'confirmed' 
+  | 'completed' 
+  | 'cancelled';
+
+export interface EventFeedback {
+  rating: number;
+  comment?: string;
+  attendee?: string;
+  anonymous: boolean;
+}
+
+// Testimonial Types
 export interface Testimonial {
   id: string;
   name: string;
-  title: string;
+  role: string;
   company: string;
-  content: string;
   avatar?: string;
-  date: string;
-  rating?: number;
-  relationship: TestimonialRelationship;
+  quote: string;
+  rating: number;
+  project?: string;
+  date: Date;
+  featured: boolean;
+  linkedin?: string;
+  approved: boolean;
 }
 
-export type TestimonialRelationship = 
-  | "Colleague"
-  | "Manager"
-  | "Direct Report"
-  | "Client"
-  | "Vendor"
-  | "Conference Attendee";
-
-export interface Certification {
-  id: string;
-  name: string;
-  issuer: string;
-  issueDate: string;
-  expiryDate?: string;
-  credentialId?: string;
-  credentialUrl?: string;
-  badge?: string;
-  description?: string;
-  skills: string[];
-}
-
-export interface Award {
+// Skill Types
+export interface SkillCategory {
   id: string;
   title: string;
-  issuer: string;
-  date: string;
-  description: string;
-  category: AwardCategory;
-  image?: string;
+  icon: string;
+  color: string;
+  percentage: number;
+  skills: Skill[];
 }
 
-export type AwardCategory = 
-  | "Professional Excellence"
-  | "Leadership"
-  | "Innovation"
-  | "Community Contribution"
-  | "Speaking"
-  | "Technical Achievement";
-
-export interface ContactForm {
+export interface Skill {
+  id: string;
   name: string;
-  email: string;
-  company?: string;
-  subject: string;
-  message: string;
-  service?: string;
-  budget?: string;
-  timeline?: string;
+  level: SkillLevel;
+  yearsOfExperience: number;
+  certifications: string[];
 }
 
+export type SkillLevel = 'beginner' | 'intermediate' | 'advanced' | 'expert';
+
+// Blog and Content Types
 export interface BlogPost {
   id: string;
   title: string;
   slug: string;
   excerpt: string;
   content: string;
-  publishedAt: string;
-  updatedAt?: string;
   author: string;
+  publishedAt?: Date;
+  updatedAt: Date;
+  status: 'draft' | 'published' | 'archived';
+  categories: string[];
   tags: string[];
-  category: string;
-  featured: boolean;
-  image?: string;
-  readTime: number;
+  featuredImage?: string;
+  readingTime: number;
+  views: number;
+  likes: number;
   seo: {
-    title: string;
-    description: string;
-    keywords: string[];
+    metaTitle?: string;
+    metaDescription?: string;
+    metaKeywords: string[];
   };
 }
 
-export interface SEOData {
-  title: string;
-  description: string;
-  keywords: string[];
-  image?: string;
-  url?: string;
-  type?: string;
-  author?: string;
-  publishedTime?: string;
-  modifiedTime?: string;
+// Contact and Communication Types
+export interface ContactMessage {
+  id: string;
+  name: string;
+  email: string;
+  company?: string;
+  subject: string;
+  message: string;
+  serviceType?: string;
+  status: 'new' | 'read' | 'replied' | 'archived';
+  priority: 'low' | 'medium' | 'high';
+  createdAt: Date;
+  repliedAt?: Date;
 }
 
-export interface AnalyticsEvent {
-  event: string;
-  category: string;
-  action: string;
-  label?: string;
-  value?: number;
-  custom_parameters?: Record<string, any>;
+// API Response Types
+export interface ApiResponse<T = unknown> {
+  success: boolean;
+  data?: T;
+  message?: string;
+  error?: string;
+  pagination?: {
+    page: number;
+    limit: number;
+    total: number;
+    totalPages: number;
+  };
 }
 
-export interface ThemeConfig {
-  mode: "light" | "dark" | "system";
-  primaryColor: string;
-  fontFamily: string;
-  borderRadius: string;
-  animations: boolean;
+// Form Types
+export interface ContactFormData {
+  name: string;
+  email: string;
+  company?: string;
+  subject: string;
+  message: string;
+  serviceType?: string;
 }
 
-export interface PerformanceMetrics {
-  fcp: number; // First Contentful Paint
-  lcp: number; // Largest Contentful Paint
-  fid: number; // First Input Delay
-  cls: number; // Cumulative Layout Shift
-  ttfb: number; // Time to First Byte
+export interface NewsletterSubscription {
+  email: string;
+  firstName?: string;
+  lastName?: string;
+  interests: string[];
+  subscribed: boolean;
+  subscribedAt: Date;
 }
 
-export interface AccessibilityFeatures {
-  reducedMotion: boolean;
-  highContrast: boolean;
-  fontSize: "small" | "medium" | "large";
-  screenReader: boolean;
-  keyboardNavigation: boolean;
+// Analytics Types
+export interface PageView {
+  path: string;
+  timestamp: Date;
+  userAgent?: string;
+  referrer?: string;
+  country?: string;
+  device?: string;
+}
+
+export interface SiteMetrics {
+  totalViews: number;
+  uniqueVisitors: number;
+  bounceRate: number;
+  averageSessionDuration: number;
+  topPages: Array<{
+    path: string;
+    views: number;
+  }>;
+  topReferrers: Array<{
+    domain: string;
+    visits: number;
+  }>;
 }

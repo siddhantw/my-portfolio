@@ -41,7 +41,7 @@ export default function Home() {
                 transition={{ delay: 0.4, duration: 0.6 }}
                 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6"
               >
-                Hi, I'm{" "}
+                Hi, I&apos;m{" "}
                 <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                   Siddhant Wadhwani
                 </span>
@@ -114,7 +114,7 @@ export default function Home() {
                   href="/contact"
                   className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors group"
                 >
-                  Let's Connect
+                  Let&apos;s Connect
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link
@@ -349,7 +349,7 @@ export default function Home() {
               Ready to Elevate Your Quality Engineering?
             </h2>
             <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-              Let's discuss how we can enhance your testing strategy, build robust
+              Let&apos;s discuss how we can enhance your testing strategy, build robust
               automation frameworks, or accelerate your career in quality
               engineering.
             </p>
