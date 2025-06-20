@@ -15,10 +15,19 @@ const nextConfig: NextConfig = {
   
   // Webpack configuration to handle caching issues
   webpack: (config, { dev, isServer }) => {
-    // Only disable cache in development if needed
-    if (dev) {
+    // Configure caching strategy to prevent snapshot issues
+    if (!dev) {
+      // Use memory cache instead of persistent cache for production builds
+      config.cache = {
+        type: 'memory',
+      };
+    } else {
+      // Disable cache in development to prevent issues
       config.cache = false;
     }
+    
+    // Improve module resolution
+    config.resolve.symlinks = false;
     
     // Optimize bundle splitting
     if (!dev && !isServer) {
@@ -41,6 +50,12 @@ const nextConfig: NextConfig = {
       os: false,
     };
     
+    // Ignore specific warnings that don't affect functionality
+    config.ignoreWarnings = [
+      /Failed to parse source map/,
+      /Critical dependency: the request of a dependency is an expression/,
+    ];
+    
     return config;
   },
   
@@ -54,6 +69,14 @@ const nextConfig: NextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
+  
+  // Optimize TypeScript configuration
+  typescript: {
+    ignoreBuildErrors: false,
+  },
+  
+  // Configure output for better performance
+  output: 'standalone',
 };
 
 export default nextConfig;
