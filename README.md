@@ -1,9 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Siddhant Wadhwani - Portfolio Website
 
-## Getting Started
+A modern, responsive portfolio website for Siddhant Wadhwani, Engineering Manager - SDET at Newfold Digital. Built with Next.js 15, TypeScript, and Tailwind CSS, featuring smooth animations, dark mode support, and comprehensive SEO optimization.
 
-First, run the development server:
+## 🚀 About
 
+This portfolio showcases the professional journey of Siddhant Wadhwani, a quality engineering leader with 10+ years of experience. The website highlights his expertise in test automation, engineering leadership, global speaking engagements, and professional achievements including being a BrowserStack Champion and LinkedIn Top Voice.
+
+## ✨ Features
+
+- **Modern Design**: Clean, professional interface with smooth animations using Framer Motion
+- **Responsive Layout**: Optimized for all devices and screen sizes
+- **Dark Mode Support**: System-aware theme switching with next-themes
+- **SEO Optimized**: Comprehensive meta tags, Open Graph, Twitter Cards, and structured data
+- **Performance Focused**: Optimized images, bundle splitting, and fast loading times
+- **Accessibility**: WCAG compliant with proper semantic HTML and ARIA attributes
+- **Multi-page Navigation**: Dedicated sections for About, Skills, Portfolio, Services, Speaking, Testimonials, Certifications, and Contact
+
+### Key Sections
+
+- **Home**: Hero section with professional summary and quick stats
+- **About**: Detailed professional background and achievements
+- **Skills**: Technical expertise and competencies
+- **Portfolio**: Showcase of projects and contributions
+- **Services**: Professional services offered (mentorship, consulting, speaking)
+- **Speaking**: Global tech talks and conference presentations
+- **Testimonials**: Client and colleague recommendations
+- **Certifications**: Professional certifications and achievements
+- **Contact**: Multiple ways to get in touch
+
+## 🛠️ Tech Stack
+
+### Frontend Framework
+- **Next.js 15** - React framework with App Router
+- **React 19** - Modern React with latest features
+- **TypeScript 5** - Type-safe JavaScript
+
+### Styling & UI
+- **Tailwind CSS 4** - Utility-first CSS framework
+- **Framer Motion 12** - Animation library for smooth interactions
+- **Lucide React** - Beautiful, customizable icons
+- **React Icons** - Popular icon library
+- **class-variance-authority** - Type-safe component variants
+- **clsx & tailwind-merge** - Conditional class handling
+
+### Core Features
+- **next-themes** - Dark/light mode with system preference
+- **react-intersection-observer** - Scroll-triggered animations
+- **Sharp** - Optimized image processing
+
+### Development Tools
+- **ESLint** - Code linting with Next.js config
+- **PostCSS** - CSS processing
+- **Autoprefixer** - CSS vendor prefixes
+
+### Performance & SEO
+- **next-sitemap** - Automatic sitemap generation
+- **@next/bundle-analyzer** - Bundle size analysis
+- **@next/third-parties** - Third-party script optimization
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+ 
+- npm, yarn, pnpm, or bun
+
+### Installation
+
+1. **Clone the repository**
+```bash
+git clone https://github.com/siddhantwadhwani/my-portfolio.git
+cd my-portfolio
+```
+
+2. **Install dependencies**
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+3. **Start the development server**
 ```bash
 npm run dev
 # or
@@ -14,23 +93,135 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. **Open your browser**
+Visit [http://localhost:3000](http://localhost:3000) to see the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📝 Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `npm run dev` - Start development server with Turbopack
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
 
-## Learn More
+## 🏗️ Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/                    # Next.js App Router pages
+│   ├── about/             # About page
+│   ├── certifications/    # Certifications page
+│   ├── contact/           # Contact page
+│   ├── portfolio/         # Portfolio page
+│   ├── services/          # Services page
+│   ├── skills/            # Skills page
+│   ├── speaking/          # Speaking page
+│   ├── testimonials/      # Testimonials page
+│   ├── globals.css        # Global styles
+│   ├── layout.tsx         # Root layout with metadata
+│   ├── page.tsx           # Home page
+│   └── sitemap.ts         # Sitemap generation
+├── components/            # Reusable components
+│   ├── ui/               # UI components and animations
+│   ├── footer.tsx        # Site footer
+│   ├── navigation.tsx    # Main navigation
+│   └── theme-provider.tsx # Theme context provider
+├── lib/                  # Utility functions
+│   └── utils.ts          # Helper utilities
+└── types/                # TypeScript type definitions
+    └── index.ts          # Global type definitions
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+public/                   # Static assets
+├── images/              # Image assets
+├── projects/            # Project-related assets
+├── testimonials/        # Testimonial assets
+├── profile-photo.jpg    # Main profile photo
+├── og-image.jpg         # Open Graph image
+├── manifest.json        # PWA manifest
+└── robots.txt           # Search engine directives
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🎨 Customization
 
-## Deploy on Vercel
+### Theme Configuration
+The project uses a custom theme system with CSS variables for easy customization. Modify `globals.css` for color schemes and design tokens.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Content Updates
+- Update personal information in `src/app/layout.tsx` metadata
+- Modify hero content in `src/app/page.tsx`
+- Add/edit sections by creating new pages in the `app` directory
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Styling
+- Tailwind CSS configuration in `postcss.config.mjs`
+- Custom animations defined in `src/components/ui/animations.tsx`
+- Component variants using class-variance-authority
+
+## 🔧 Configuration
+
+### Environment Variables
+Create a `.env.local` file for any required environment variables:
+
+```env
+# Add your environment variables here
+NEXT_PUBLIC_SITE_URL=https://siddhantwadhwani.com
+```
+
+### SEO & Metadata
+Comprehensive SEO configuration is set up in `layout.tsx` including:
+- Open Graph tags
+- Twitter Card metadata
+- Structured data (JSON-LD)
+- Meta descriptions and keywords
+
+## 📱 Progressive Web App
+
+The site includes PWA capabilities with:
+- Web App Manifest (`manifest.json`)
+- Service Worker (when enabled)
+- Offline support
+- Install prompts
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+The easiest way to deploy is using [Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme):
+
+1. Push your code to GitHub
+2. Import your repository in Vercel
+3. Deploy with zero configuration
+
+### Other Platforms
+The project can be deployed on any platform that supports Node.js:
+- Netlify
+- Railway
+- DigitalOcean App Platform
+- AWS Amplify
+
+## 📈 Performance
+
+The website is optimized for performance with:
+- Image optimization using Next.js Image component
+- Bundle splitting and code optimization
+- Lazy loading for components and images
+- Efficient caching strategies
+- Minimal JavaScript bundle size
+
+## 🔗 Links
+
+- **Live Website**: [siddhantwadhwani.com](https://siddhantwadhwani.com)
+- **LinkedIn**: [linkedin.com/in/siddhantwadhwani](https://linkedin.com/in/siddhantwadhwani)
+- **GitHub**: [github.com/siddhantwadhwani](https://github.com/siddhantwadhwani)
+- **YouTube**: [youtube.com/@siddhantwadhwani](https://youtube.com/@siddhantwadhwani)
+
+## 📧 Contact
+
+- **Email**: hello@siddhantwadhwani.com
+- **Phone**: +91-7021158300
+- **Location**: Mumbai, Maharashtra, India
+
+## 📄 License
+
+This project is for personal portfolio use. Feel free to use it as inspiration for your own portfolio, but please don't directly copy the content.
+
+---
+
+Built with ❤️ by [Siddhant Wadhwani](https://siddhantwadhwani.com)
