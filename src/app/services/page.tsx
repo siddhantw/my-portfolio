@@ -155,6 +155,63 @@ export default function Services() {
     }
   ];
 
+  // Pricing data structures
+  type PricingRow = {
+    region: string;
+    time: string;
+    mode: string; // Virtual or In-Person
+    inr?: number | null; // optional / may be undefined if only USD
+    usd?: number | null;
+  };
+
+  interface PricingCategory {
+    title: string;
+    subtitle?: string;
+    rows: PricingRow[];
+  }
+
+  const pricingCategories: PricingCategory[] = [
+    {
+      title: "University / Educational",
+      rows: [
+        { region: "Within Mumbai", time: "1 hour", mode: "Virtual", inr: 5000, usd: 100 },
+        { region: "Within Mumbai", time: "1 hour", mode: "In-Person", inr: 10000, usd: 150 },
+        { region: "In India (outside Mumbai)", time: "1 hour", mode: "Virtual", inr: 15000, usd: 200 },
+        { region: "In India (outside Mumbai)", time: "1 hour", mode: "In-Person", inr: 45000, usd: 500 },
+        { region: "Outside India", time: "1 hour", mode: "Virtual", inr: null, usd: 1000 },
+        { region: "Outside India", time: "1 hour", mode: "In-Person", inr: null, usd: 2500 }
+      ]
+    },
+    {
+      title: "Corporate Trainings",
+      rows: [
+        { region: "Within Mumbai", time: "1 hour", mode: "Virtual", inr: 15000, usd: 200 },
+        { region: "Within Mumbai", time: "1 hour", mode: "In-Person", inr: 30000, usd: 350 },
+        { region: "In India (outside Mumbai)", time: "1 hour", mode: "Virtual", inr: 45000, usd: 500 },
+        { region: "In India (outside Mumbai)", time: "1 hour", mode: "In-Person", inr: 75000, usd: 1000 },
+        { region: "Outside India", time: "1 hour", mode: "Virtual", inr: null, usd: 1500 },
+        { region: "Outside India", time: "1 hour", mode: "In-Person", inr: null, usd: 3000 }
+      ]
+    },
+    {
+      title: "Engagement Types",
+      subtitle: "Podcast • Mentoring • Speaking",
+      rows: [
+        { region: "Podcast", time: "30 mins", mode: "Virtual", inr: 10000, usd: 250 },
+        { region: "Podcast", time: "30 mins", mode: "In-Person", inr: 25000, usd: 1250 },
+        { region: "Mentoring", time: "1 hour", mode: "Virtual", inr: 10000, usd: 500 },
+        { region: "Mentoring", time: "1 hour", mode: "In-Person", inr: 25000, usd: 2500 },
+        { region: "Speaker", time: "30 mins", mode: "Virtual", inr: 10000, usd: 500 },
+        { region: "Speaker", time: "30 mins", mode: "In-Person", inr: 25000, usd: 1250 },
+        { region: "Speaker", time: "1 hour", mode: "Virtual", inr: 20000, usd: 1000 },
+        { region: "Speaker", time: "1 hour", mode: "In-Person", inr: 50000, usd: 2500 }
+      ]
+    }
+  ];
+
+  const formatINR = (val?: number | null) => (val === null || val === undefined ? "—" : `₹${val.toLocaleString('en-IN')}`);
+  const formatUSD = (val?: number | null) => (val === null || val === undefined ? "—" : `$${val.toLocaleString('en-US')}`);
+
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
       {/* Header Section */}
@@ -173,6 +230,118 @@ export default function Services() {
               and training from a seasoned professional with 10+ years of experience.
             </p>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Pricing & Packages Section */}
+      <section className="py-24 bg-gradient-to-b from-white via-blue-50/40 to-white dark:from-gray-900 dark:via-gray-800/50 dark:to-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              Pricing & Engagement Models
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+              Transparent baseline pricing for popular formats. Final quotes may vary based on scope, audience size,
+              preparation depth, customization, travel logistics, and intellectual property requirements.
+            </p>
+          </motion.div>
+
+          <div className="space-y-20">
+            {pricingCategories.map((cat, idx) => (
+              <motion.div
+                key={cat.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <div className="mb-6 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+                  <div>
+                    <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
+                      {cat.title}
+                    </h3>
+                    {cat.subtitle && (
+                      <p className="text-sm text-gray-500 dark:text-gray-400 tracking-wide mt-1">
+                        {cat.subtitle}
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                <div className="overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm bg-white/70 dark:bg-gray-800/70 backdrop-blur">
+                  <table className="w-full text-sm">
+                    <thead className="bg-gray-100/70 dark:bg-gray-700/60 text-gray-700 dark:text-gray-200">
+                      <tr className="text-left">
+                        <th className="py-3 px-4 font-medium">Region / Type</th>
+                        <th className="py-3 px-4 font-medium">Time</th>
+                        <th className="py-3 px-4 font-medium">Format</th>
+                        <th className="py-3 px-4 font-medium">Charges (INR)</th>
+                        <th className="py-3 px-4 font-medium">Charges (USD)</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+                      {cat.rows.map((row, rIdx) => (
+                        <tr
+                          key={rIdx}
+                          className="group hover:bg-blue-50/60 dark:hover:bg-blue-900/20 transition-colors"
+                        >
+                          <td className="py-3 px-4 font-medium text-gray-900 dark:text-gray-100">
+                            {row.region}
+                          </td>
+                          <td className="py-3 px-4 text-gray-600 dark:text-gray-300">
+                            {row.time}
+                          </td>
+                          <td className="py-3 px-4">
+                            <span className="inline-flex items-center rounded-md bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-2 py-1 text-[11px] font-semibold uppercase tracking-wide">
+                              {row.mode}
+                            </span>
+                          </td>
+                          <td className="py-3 px-4 text-gray-700 dark:text-gray-200 tabular-nums">
+                            {formatINR(row.inr)}
+                          </td>
+                          <td className="py-3 px-4 text-gray-700 dark:text-gray-200 tabular-nums">
+                            {formatUSD(row.usd)}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="mt-16 grid md:grid-cols-3 gap-8">
+            <div className="md:col-span-2 space-y-4 text-sm text-gray-600 dark:text-gray-400">
+              <p className="flex items-start gap-2"><span className="mt-0.5 text-blue-600 dark:text-blue-400">•</span> Prices are indicative starting points; detailed proposals provided after discovery.</p>
+              <p className="flex items-start gap-2"><span className="mt-0.5 text-blue-600 dark:text-blue-400">•</span> &quot;—&quot; indicates pricing primarily quoted in USD or requires a tailored INR quote.</p>
+              <p className="flex items-start gap-2"><span className="mt-0.5 text-blue-600 dark:text-blue-400">•</span> Travel, accommodation, extended prep, custom curriculum & licensing are additional where applicable.</p>
+              <p className="flex items-start gap-2"><span className="mt-0.5 text-blue-600 dark:text-blue-400">•</span> Discounts available for universities, nonprofits & multi-session bundles.</p>
+            </div>
+            <div className="flex flex-col items-start gap-4">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center w-full md:w-auto px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium shadow-sm transition-colors"
+              >
+                Contact for Customized Quote
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+              <a
+                href="https://calendly.com/siddhantwadhwani"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center w-full md:w-auto px-6 py-3 rounded-lg border border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-300 hover:bg-blue-50 dark:hover:bg-blue-900/30 font-medium transition-colors"
+              >
+                Book a Discovery Call
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 

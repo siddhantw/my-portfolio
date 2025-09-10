@@ -86,14 +86,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+  <html lang="en" suppressHydrationWarning className="min-h-full bg-white dark:bg-gray-900">
       <head>
+        {/* Early theme hydration to avoid flash and ensure dark class applied before paint */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(() => {try {const stored = localStorage.getItem('theme');const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;const theme = stored || (systemDark ? 'dark' : 'light');const root = document.documentElement; if(theme === 'dark') {root.classList.add('dark');} else {root.classList.remove('dark');}} catch(e) {}})();`
+          }}
+        />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#3b82f6" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
         
         {/* Structured Data */}
         <script
@@ -143,7 +150,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.className} antialiased`}>
+      <body className={`${inter.className} antialiased min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300`}>
+        <a href="#main-content" className="skip-link sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] bg-blue-600 text-white px-4 py-2 rounded-md shadow-lg">
+          Skip to main content
+        </a>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -152,7 +162,7 @@ export default function RootLayout({
         >
           <div className="flex flex-col min-h-screen">
             <Navigation />
-            <main className="flex-grow">
+            <main id="main-content" className="flex-grow" role="main">
               {children}
             </main>
             <Footer />

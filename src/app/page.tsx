@@ -66,7 +66,7 @@ export default function Home() {
                 <span className="font-semibold text-blue-600 dark:text-blue-400">
                   Newfold Digital
                 </span>{" "}
-                with 10+ years experience. Global tech speaker with 100+ talks
+                with 10+ years experience. Global tech speaker with 120+ talks
                 across the world.
               </motion.p>
 
@@ -87,7 +87,7 @@ export default function Home() {
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-gray-900 dark:text-white">
-                    100+
+                    120+
                   </div>
                   <div className="text-sm text-gray-600 dark:text-gray-400">
                     Tech Talks
@@ -95,7 +95,7 @@ export default function Home() {
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-gray-900 dark:text-white">
-                    23K+
+                    ~25K
                   </div>
                   <div className="text-sm text-gray-600 dark:text-gray-400">
                     LinkedIn Followers
@@ -252,7 +252,7 @@ export default function Home() {
                 Global Tech Speaker
               </h3>
               <p className="text-gray-600 dark:text-gray-400">
-                100+ talks at WordCamps, Test Summits, RoboCon Helsinki, and more
+                120+ talks at WordCamps, Test Summits, RoboCon Helsinki, and more
               </p>
             </motion.div>
           </div>

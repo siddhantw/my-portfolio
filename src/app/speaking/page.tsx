@@ -125,9 +125,9 @@ export default function Speaking() {
   ];
 
   const stats = [
-    { number: "100+", label: "Speaking Engagements" },
+    { number: "120+", label: "Speaking Engagements" },
     { number: "50K+", label: "Total Audience Reached" },
-    { number: "25+", label: "Countries Spoken In" },
+    { number: "10+", label: "Countries Spoken In" },
     { number: "95%", label: "Average Session Rating" }
   ];
 

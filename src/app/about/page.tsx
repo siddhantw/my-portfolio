@@ -112,7 +112,7 @@ export default function About() {
                 <div className="absolute -bottom-6 -right-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4">
                   <div className="flex items-center space-x-2">
                     <Users className="h-5 w-5 text-blue-600" />
-                    <span className="text-sm font-medium">23K+ LinkedIn Followers</span>
+                    <span className="text-sm font-medium">~25K LinkedIn Followers</span>
                   </div>
                 </div>
               </div>
